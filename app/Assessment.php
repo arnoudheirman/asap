@@ -9,12 +9,18 @@ class Assessment extends Model
     //
     public function competences()
     {
-        return $this->belongsToMany('App\Competence');
+        return $this->belongsTo('App\Competence');
+    }
+
+
+    public function levels()
+    {
+        return $this->belongsTo('App\Level');
     }
 
     public function connotation()
     {
-        return $this->belongsTo('App\Connotation');
+        return $this->hasOne('App\Connotation');
     }
 
 }

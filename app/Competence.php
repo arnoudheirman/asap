@@ -13,6 +13,6 @@ class Competence extends Model
     }
     public function assessments()
     {
-        return $this->belongsToMany('App\Assessment');
+        return $this->hasMany('App\Assessment');
     }
 }

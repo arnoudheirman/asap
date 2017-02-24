@@ -12,3 +12,6 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::get('/create', 'ReportController@index');
+
+//Route::get('/filter', 'ReportController@filter');
