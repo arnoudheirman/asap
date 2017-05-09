@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Assessment;
 use App\Competence;
 use App\Connotation;
+use App\AssessmentFilters;
 use App\Level;
 use App\Report;
 use Illuminate\Http\Request;
@@ -17,31 +18,67 @@ class ReportController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    //public function index(Request $request)
+    public function index(AssessmentFilters $filters)
     {
 
         /** @var TYPE_NAME $assessment */
-        $assessment = (new Assessment)->newQuery();
+        /*$assessments = (new Assessment)->newQuery();
 
-        if($request->has('connotations')){
-            $assessments = $assessment->where('connotation_id', $request->connotation)->get();
+        if($request->has('connotation')){
+           $assessments->where('connotation_id', $request->connotation);
         }
         if($request->has('level')){
-            $assessments = $assessment->where('level_id', $request->level)->get();
+            $assessments->where('level_id', $request->level);
         }
         if($request->has('competence')){
             //$assesments = $assesment->where('level_id', $request->level)->get();
-            $assessments = $assessment->join('assessment_competence', 'assessments.id', '=', 'assessment_competence.assessment_id')
-            ->where('assessment_competence.competence_id', $request->competence)->get();
+            $assessments->join('assessment_competence', 'assessments.id', '=', 'assessment_competence.assessment_id')
+            ->where('assessment_competence.competence_id', $request->competence);
         }
 
-        $assessment->get();
+        $assessments->get();*/
+        
+        $assessments = Assessment::filter($filters)->get();
+        
+        //dd($assessments);
 
         $connotations = Connotation::all();
         $levels = Level::all();
         $competences = Competence::all();
 
-        return view('reports/index', compact('connotations', 'assesments', 'levels', 'competences'));
+        return view('reports/index', compact('connotations', 'assessments', 'levels', 'competences'));
+    }
+    
+     public function filteritems(AssessmentFilters $filters)
+    {
+
+        /** @var TYPE_NAME $assessment */
+        /*$assessments = (new Assessment)->newQuery();
+
+        if($request->has('connotation')){
+           $assessments->where('connotation_id', $request->connotation);
+        }
+        if($request->has('level')){
+            $assessments->where('level_id', $request->level);
+        }
+        if($request->has('competence')){
+            //$assesments = $assesment->where('level_id', $request->level)->get();
+            $assessments->join('assessment_competence', 'assessments.id', '=', 'assessment_competence.assessment_id')
+            ->where('assessment_competence.competence_id', $request->competence);
+        }
+
+        $assessments->get();*/
+        
+        $assessments = Assessment::filter($filters)->get();
+        
+        //dd($assessments);
+
+        /*$connotations = Connotation::all();
+        $levels = Level::all();
+        $competences = Competence::all();
+
+        return view('reports/index', compact('connotations', 'assessments', 'levels', 'competences'));*/
     }
 
     /**

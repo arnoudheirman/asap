@@ -19,6 +19,7 @@ class CreateAssessmentsTable extends Migration
             $table->string('description');
             $table->integer('connotation_id')->unsigned();
             $table->integer('level_id')->unsigned();
+            $table->integer('competence_id')->unsigned();
             $table->timestamps();
         });
     }

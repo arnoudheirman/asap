@@ -11,7 +11,14 @@
 |
 */
 
+/***Routes for creating reports****/
+
 Route::get('/', 'HomeController@index');
-Route::get('/create', 'ReportController@index');
+Route::get('/create-assessment', 'ReportController@index');
+
+Route::get('/admin/assessment/create', 'Admin\AssessmentsController@create');
+Route::post('/admin/assessment', 'Admin\AssessmentsController@store');
+
+//Route::post('/create-assesment', 'ReportController@create');
 
 //Route::get('/filter', 'ReportController@filter');

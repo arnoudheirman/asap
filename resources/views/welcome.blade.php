@@ -15,12 +15,6 @@
 
 </head>
 <body>
-@foreach($assessments as $assessment)
-    @foreach($assessment->competences as $competence)
-        @foreach($competence->levels as $level)
-            {{$level->name}}
-        @endforeach
-    @endforeach
-@endforeach
+
 </body>
 </html>

@@ -19,6 +19,7 @@ class AssessmentsTableSeeder extends Seeder
             'description' => str_random(100),
             'connotation_id' => 1,
             'level_id' => 1,
+            'competence_id' => 1,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
 
